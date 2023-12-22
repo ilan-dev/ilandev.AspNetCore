@@ -34,9 +34,9 @@ jobs:
       working-directory: ${{ env.SLN_DIR }}
       
     - name: dotnet pack
-      run: dotnet pack --no-restore
+      run: dotnet pack --no-restore -o ./output
       working-directory: ${{ env.SLN_DIR }}
       
     - name: dotnet push
-      run: dotnet nuget push "**/*.nupkg" -k ${{ secrets.NUGETORG_KEY }}
+      run: dotnet nuget push "./output/*.nupkg" -k ${{ secrets.NUGETORG_KEY }}
       working-directory: ${{ env.SLN_DIR }}

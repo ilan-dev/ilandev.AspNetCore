@@ -4,6 +4,7 @@
 name: exception-handler - publish
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "master" ]
     paths: 

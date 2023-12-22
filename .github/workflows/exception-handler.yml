@@ -6,6 +6,8 @@ name: exception-handler - publish
 on:
   push:
     branches: [ "master" ]
+    paths: 
+      - src/ilandev.AspNetCore.ExceptionHandler/*
 
 env:
   SLN_DIR: src/ilandev.AspNetCore.ExceptionHandler
@@ -35,5 +37,5 @@ jobs:
       working-directory: ${{ env.SLN_DIR }}
       
     - name: dotnet push
-      run: dotnet nuget push ./**/*.nupkg
+      run: dotnet nuget push "**/*.nupkg" -k ${{ secrets.NUGETORG_KEY }}
       working-directory: ${{ env.SLN_DIR }}

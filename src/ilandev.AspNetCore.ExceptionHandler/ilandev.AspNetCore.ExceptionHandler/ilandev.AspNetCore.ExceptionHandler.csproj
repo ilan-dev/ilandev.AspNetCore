@@ -5,6 +5,20 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>0.1.0</Version>
+		<Authors>ilan.dev</Authors>
+		<Company>ilan.dev</Company>
+		<Description>Customizable exception mapping middleware for ASP.NET Core. Allows you to specify custom response lambdas for specific exception types.</Description>
+		<Copyright>ilan.dev ©️ 2023</Copyright>
+		<PackageProjectUrl>https://github.com/ilan-dev/ilandev.AspNetCore</PackageProjectUrl>
+		<PackageIcon>package-icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/ilan-dev/ilandev.AspNetCore</RepositoryUrl>
+		<PackageTags>aspnetcore,exception,middleware,handler</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,4 +31,14 @@
 		</AssemblyAttribute>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Include="..\..\..\package-icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 </Project>

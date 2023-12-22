@@ -2,6 +2,6 @@
 
 internal class MappingHandler
 {
-    public Type ExceptionType { get; set; }
-    public Delegate Mapping { get; set; }
+    public required Type ExceptionType { get; init; }
+    public required Delegate Mapping { get; init; }
 }

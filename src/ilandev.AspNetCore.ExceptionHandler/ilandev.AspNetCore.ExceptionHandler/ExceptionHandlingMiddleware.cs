@@ -1,13 +1,17 @@
-﻿using System.Net.Mime;
+﻿using System.Net;
+using System.Net.Mime;
 using System.Text.Json;
 using ilandev.AspNetCore.ExceptionHandler.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace ilandev.AspNetCore.ExceptionHandler;
 
 internal class ExceptionHandlingMiddleware(
     ILogger<ExceptionHandlingMiddleware> log,
+    IWebHostEnvironment environment,
     ExceptionHandlingOptions options
 ) : IMiddleware
 {
@@ -34,10 +38,7 @@ internal class ExceptionHandlingMiddleware(
     {
         var exceptionType = ex.GetType();
 
-        if (exceptionType == typeof(TaskCanceledException) && options.IgnoreTaskCancellation)
-        {
-            return;
-        }
+        if (exceptionType == typeof(TaskCanceledException) && options.IgnoreTaskCancellation) return;
 
         log.LogError("Caught exception of type {exceptionType}", exceptionType.Name);
 
@@ -47,18 +48,20 @@ internal class ExceptionHandlingMiddleware(
 
         if (matchingHandler is null)
         {
-            log.LogDebug("No registered exception handler found for exception of type {exceptionType}, skipping", exceptionType.Name);
+            log.LogDebug("No registered exception handler found for exception of type {exceptionType}, writing default response", exceptionType.Name);
+
+            await WriteDefaultResponseAsync(context, ex);
 
             return;
         }
 
         log.LogDebug("Found registered exception handler for exception of type {exceptionType}, running", exceptionType.Name);
 
-        ExceptionMapping? mappingResult = matchingHandler.Mapping.DynamicInvoke(exceptionType) as ExceptionMapping;
-
-        if (mappingResult is null)
+        if (matchingHandler.Mapping.DynamicInvoke(ex) is not ExceptionMapping mappingResult)
         {
-            log.LogWarning("Exception handler returned null result, skipping");
+            log.LogWarning("Exception handler returned null result, writing default response");
+
+            await WriteDefaultResponseAsync(context, ex);
 
             return;
         }
@@ -75,7 +78,27 @@ internal class ExceptionHandlingMiddleware(
 
         context.RequestAborted.ThrowIfCancellationRequested();
 
-        var responseJson = JsonSerializer.Serialize(mappingResult.Response, options.JsonSerializerOptions);
+        await WriteToResponseAsync(context, mappingResult.Response);
+    }
+
+    private async Task WriteDefaultResponseAsync(HttpContext context, Exception ex)
+    {
+        context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+
+        if (!environment.IsDevelopment() && !options.WriteExceptionDetails) return;
+
+        var response = new ExceptionDetailsResponse
+        {
+            Message = ex.Message,
+            StackTrace = ex.StackTrace
+        };
+
+        await WriteToResponseAsync(context, response);
+    }
+
+    private async Task WriteToResponseAsync(HttpContext context, object response)
+    {
+        var responseJson = JsonSerializer.Serialize(response, options.JsonSerializerOptions);
 
         await context.Response.WriteAsync(responseJson, context.RequestAborted);
     }

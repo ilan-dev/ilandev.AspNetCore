@@ -12,6 +12,7 @@ on:
 
 env:
   SLN_DIR: src/ilandev.AspNetCore.ExceptionHandler
+  NUGET_SRC: https://api.nuget.org/v3/index.json
 
 jobs:
   build:
@@ -38,5 +39,5 @@ jobs:
       working-directory: ${{ env.SLN_DIR }}
       
     - name: dotnet push
-      run: dotnet nuget push "./output/*.nupkg" -k ${{ secrets.NUGETORG_KEY }}
+      run: dotnet nuget push "./output/*.nupkg" -k ${{ secrets.NUGETORG_KEY }} -s ${{ env.NUGET_SRC }}
       working-directory: ${{ env.SLN_DIR }}

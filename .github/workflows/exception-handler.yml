@@ -5,10 +5,6 @@ name: exception-handler - publish
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "master" ]
-    paths: 
-      - src/ilandev.AspNetCore.ExceptionHandler/*
 
 env:
   SLN_DIR: src/ilandev.AspNetCore.ExceptionHandler

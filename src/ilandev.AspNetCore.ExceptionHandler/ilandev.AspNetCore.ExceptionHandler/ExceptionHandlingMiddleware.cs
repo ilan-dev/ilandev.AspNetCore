@@ -40,7 +40,14 @@ internal class ExceptionHandlingMiddleware(
 
         if (exceptionType == typeof(TaskCanceledException) && options.IgnoreTaskCancellation) return;
 
-        log.LogError("Caught exception of type {exceptionType}", exceptionType.Name);
+        if (options.LogExceptionDetails)
+        {
+            log.LogError(ex, "Caught exception in exception handler");
+        }
+        else
+        {
+            log.LogDebug("Caught exception of type {exceptionType}", exceptionType.Name);
+        }
 
         var matchingHandler = options.AllowExceptionInheritance
             ? options.Handlers.Find(f => exceptionType.IsAssignableTo(f.ExceptionType))

@@ -28,5 +28,10 @@ public class ExceptionHandlingOptions
     /// </summary>
     public bool WriteExceptionDetails { get; set; }
 
+    /// <summary>
+    ///     Whether to write the exception to log.
+    /// </summary>
+    public bool LogExceptionDetails { get; set; }
+
     internal List<MappingHandler> Handlers { get; set; } = [];
 }

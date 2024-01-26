@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>0.1.1</Version>
+		<Version>0.1.2</Version>
 		<Authors>ilan.dev</Authors>
 		<Company>ilan.dev</Company>
 		<Description>Customizable exception mapping middleware for ASP.NET Core. Allows you to specify custom response lambdas for specific exception types.</Description>

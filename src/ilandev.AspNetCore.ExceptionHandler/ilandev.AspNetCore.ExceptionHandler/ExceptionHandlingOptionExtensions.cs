@@ -28,6 +28,16 @@ public static class ExceptionHandlingOptionExtensions
         return options;
     }
 
+        /// <summary>
+    ///     Sets the <see cref="ExceptionHandlingOptions.LogExceptionDetails" /> property.
+    /// </summary>
+    public static ExceptionHandlingOptions LogExceptionDetails(this ExceptionHandlingOptions options, bool logExceptionDetails = true)
+    {
+        options.LogExceptionDetails = logExceptionDetails;
+
+        return options;
+    }
+
     /// <summary>
     ///     Sets the <see cref="ExceptionHandlingOptions.WriteExceptionDetails" /> property.
     /// </summary>

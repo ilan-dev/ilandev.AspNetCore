@@ -14,7 +14,7 @@
 		<PackageIcon>package-icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/ilan-dev/ilandev.AspNetCore</RepositoryUrl>
-		<PackageTags>aspnetcore,exception,middleware,handler</PackageTags>
+		<PackageTags>aspnetcore,configuration,extensions</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>

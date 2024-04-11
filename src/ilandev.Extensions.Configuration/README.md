@@ -1,6 +1,6 @@
-# ilandev.AspNetCore.ExceptionHandler
+# ilandev.Extensions.Configuration
 
-![nuget.org](https://img.shields.io/nuget/dt/ilandev.AspNetCore.ExceptionHandler?style=flat-square&logo=nuget)
+[![nuget.org](https://img.shields.io/nuget/dt/ilandev.Extensions.Configuration?style=flat-square&logo=nuget)](https://www.nuget.org/packages/ilandev.Extensions.Configuration/)
 
 Handy `IConfiguration` extensions that help you reduce boilerplate code when adding `IOptions<T>` to your service collection.
 

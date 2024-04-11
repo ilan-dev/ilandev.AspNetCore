@@ -1,6 +1,6 @@
 # ilandev.AspNetCore.ExceptionHandler
 
-![nuget.org](https://img.shields.io/nuget/dt/ilandev.AspNetCore.ExceptionHandler?style=flat-square&logo=nuget)
+[![nuget.org](https://img.shields.io/nuget/dt/ilandev.AspNetCore.ExceptionHandler?style=flat-square&logo=nuget)](https://www.nuget.org/packages/ilandev.AspNetCore.ExceptionHandler)
 
 Customizable exception mapping middleware for ASP.NET Core. Allows you to specify custom response lambdas for specific exception types.
 

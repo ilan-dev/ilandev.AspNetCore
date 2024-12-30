@@ -14,6 +14,11 @@
     <RepositoryUrl>https://github.com/ilan-dev/ilandev.AspNetCore</RepositoryUrl>
     <PackageTags>recaptcha,google,v3</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
+    <PackageReleaseNotes>Added documentation for all public classes and methods.</PackageReleaseNotes>
   </PropertyGroup>
 
     <ItemGroup>

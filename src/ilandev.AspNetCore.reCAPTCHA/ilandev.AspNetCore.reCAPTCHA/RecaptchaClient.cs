@@ -3,6 +3,9 @@ using Microsoft.Extensions.Options;
 
 namespace ilandev.AspNetCore.reCAPTCHA;
 
+/// <summary>
+/// A client for verifying reCAPTCHA tokens.
+/// </summary>
 public interface IRecaptchaClient
 {
     /// <summary>
@@ -15,11 +18,15 @@ public interface IRecaptchaClient
     Task<RecaptchaVerifyResponse> VerifyAsync(string token, string? remoteIp = default, CancellationToken cancellationToken = default);
 }
 
+/// <summary>
+/// Default implementation for <see cref="IRecaptchaClient"/>.
+/// </summary>
 public class RecaptchaClient(
     HttpClient httpClient,
     IOptions<RecaptchaOptions> options
 ) : IRecaptchaClient
 {
+    /// <inheritdoc />
     public async Task<RecaptchaVerifyResponse> VerifyAsync(string token, string? remoteIp = default, CancellationToken cancellationToken = default)
     {
         var request = new RecaptchaVerificationRequest

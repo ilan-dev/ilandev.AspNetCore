@@ -1,8 +1,11 @@
 ﻿namespace ilandev.AspNetCore.reCAPTCHA;
 
+/// <summary>
+/// Options model for <see cref="IRecaptchaClient"/>.
+/// </summary>
 public class RecaptchaOptions
 {
-    public const string Section = "Recaptcha";
+    internal const string Section = "Recaptcha";
 
     /// <summary>
     /// Gets the token verification URL.

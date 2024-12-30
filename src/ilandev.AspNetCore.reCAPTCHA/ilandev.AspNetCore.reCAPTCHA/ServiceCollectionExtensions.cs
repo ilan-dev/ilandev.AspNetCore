@@ -4,6 +4,9 @@ using Microsoft.Extensions.Options;
 
 namespace ilandev.AspNetCore.reCAPTCHA;
 
+/// <summary>
+/// Service collection extensions used to configure and add the <see cref="IRecaptchaClient"/> to the service collection.
+/// </summary>
 public static class ServiceCollectionExtensions
 {
     /// <summary>

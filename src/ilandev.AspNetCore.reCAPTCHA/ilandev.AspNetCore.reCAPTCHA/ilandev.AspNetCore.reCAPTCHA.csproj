@@ -15,10 +15,10 @@
     <PackageTags>recaptcha,google,v3</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Version>1.0.1</Version>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
-    <FileVersion>1.0.1</FileVersion>
-    <PackageReleaseNotes>Added documentation for all public classes and methods.</PackageReleaseNotes>
+    <Version>1.0.2</Version>
+    <AssemblyVersion>1.0.2</AssemblyVersion>
+    <FileVersion>1.0.2</FileVersion>
+    <PackageReleaseNotes>Fixed the verification request being sent as JSON instead of as a form.</PackageReleaseNotes>
   </PropertyGroup>
 
     <ItemGroup>

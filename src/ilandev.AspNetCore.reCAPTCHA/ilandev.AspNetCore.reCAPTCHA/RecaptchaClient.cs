@@ -36,11 +36,14 @@ public class RecaptchaClient(
             RemoteIp = remoteIp
         };
 
-        using var response = await httpClient.PostAsJsonAsync(
-            string.Empty,
-            request,
-            cancellationToken
-        );
+        using var reqContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["secret"] = options.Value.SecretKey,
+            ["response"] = token,
+            ["remoteip"] = remoteIp
+        });
+
+        using var response = await httpClient.PostAsync(string.Empty, reqContent, cancellationToken);
 
         response.EnsureSuccessStatusCode();
 
